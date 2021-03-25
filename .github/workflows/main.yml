@@ -13,3 +13,36 @@ jobs:
       - uses: actions/checkout@v2
       - run: shellcheck entrypoint.sh
       - uses: ./
+        with:
+          ignore: test
+
+  test-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: lint
+        continue-on-error: true
+        uses: ./
+        with:
+          files: test/fail.md
+          annotations: false
+      - run: test "${{ steps.lint.outcome }}" == "failure"
+
+  test-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          files: test/fail.md
+          config: test/.markdownlint.json
+
+  test-fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          files: test/fix.md
+          fix: true
+      - run: test "$(md5sum test/fix.md)" == "d38a4c066f4c6e80a0409e23f68226bf  test/fix.md"
