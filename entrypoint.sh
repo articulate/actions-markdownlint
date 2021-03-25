@@ -2,8 +2,10 @@
 
 # Copy the matcher to a shared volume with the host; otherwise "add-matcher"
 # can't find it.
-cp /problem-matcher.json "${HOME}/markdownlint-problem-matcher.json"
-echo "::add-matcher::${HOME}/markdownlint-problem-matcher.json"
+if [ "$INPUT_ANNOTATIONS" != "false" ]; then
+    cp /problem-matcher.json "${HOME}/markdownlint-problem-matcher.json"
+    echo "::add-matcher::${HOME}/markdownlint-problem-matcher.json"
+fi
 
 MARKDOWNLINT=
 
