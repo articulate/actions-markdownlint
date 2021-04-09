@@ -1,23 +1,23 @@
-name: 'markdownlint'
-author: 'Articulate'
-description: 'Lint your markdown'
+name: markdown-lint
+author: Articulate Global Inc.
+description: Lint your markdown
 inputs:
   config:
-    description: 'markdownlint config file'
+    description: markdownlint config file
     required: false
   files:
-    description: 'Markdown files to scan'
+    description: Markdown files to scan
     required: false
     default: '**/*.{md,markdown}'
   ignore:
-    description: 'Files or directories to ignore'
+    description: Files or directories to ignore
     required: false
   fix:
-    description: 'Try to fix basic errors'
+    description: Try to fix basic errors
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
 branding:
-  color: 'blue'
-  icon: 'check-circle'
+  color: blue
+  icon: check-circle

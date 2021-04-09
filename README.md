@@ -9,13 +9,13 @@ file (`.markdownlint.{yaml,yml,json}`) or use our included default and scan all
 files with the `md` or `markdown` extension.
 
 ```yaml
-- uses: articulate/actions-markdownlint@main
+- uses: articulate/actions-markdownlint@v1
 ```
 
 You can set the config file, the files it scans, or files/directories to ignore.
 
 ```yaml
-- uses: articulate/actions-markdownlint@main
+- uses: articulate/actions-markdownlint@v1
   with:
     config: markdownlint-config.json
     files: 'docs/**/*.md'
