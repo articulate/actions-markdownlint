@@ -2,6 +2,9 @@ name: markdown-lint
 author: Articulate Global Inc.
 description: Lint your markdown
 inputs:
+  version:
+    description: Version of markdownlint-cli to use
+    required: false
   config:
     description: markdownlint config file
     required: false
