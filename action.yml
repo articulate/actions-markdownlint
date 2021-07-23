@@ -1,5 +1,5 @@
 name: markdown-lint
-author: Articulate Global Inc.
+author: Articulate Global, LLC
 description: Lint your markdown
 inputs:
   version:
