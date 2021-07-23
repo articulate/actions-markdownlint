@@ -12,7 +12,8 @@ files with the `md` or `markdown` extension.
 - uses: articulate/actions-markdownlint@v1
 ```
 
-You can set the config file, the files it scans, or files/directories to ignore.
+You can set the config file, the files it scans, files/directories to ignore, or
+the version of markdownlint-cli to install.
 
 ```yaml
 - uses: articulate/actions-markdownlint@v1
@@ -20,4 +21,5 @@ You can set the config file, the files it scans, or files/directories to ignore.
     config: markdownlint-config.json
     files: 'docs/**/*.md'
     ignore: node_modules
+    version: 0.28.1
 ```

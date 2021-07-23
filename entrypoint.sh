@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -n "$INPUT_VERSION" ]; then
+    echo "::debug::installing markdownlint-cli ${INPUT_VERSION}"
+    npm install --global --production "markdownlint-cli@${INPUT_VERSION}"
+fi
+
 # Copy the matcher to a shared volume with the host; otherwise "add-matcher"
 # can't find it.
 if [ "$INPUT_ANNOTATIONS" != "false" ]; then
