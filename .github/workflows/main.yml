@@ -10,7 +10,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: shellcheck entrypoint.sh
       - uses: ./
         with:
@@ -19,7 +19,7 @@ jobs:
   test-fail:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: lint
         continue-on-error: true
         uses: ./
@@ -31,7 +31,7 @@ jobs:
   test-config:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./
         with:
           files: test/fail.md
@@ -40,7 +40,7 @@ jobs:
   test-fix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./
         with:
           files: test/fix.md
