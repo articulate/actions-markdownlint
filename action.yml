@@ -1,22 +1,22 @@
 name: markdown-lint
 author: Articulate Global, LLC
-description: Lint your markdown
+description: Lint your markdown files.
 inputs:
   version:
-    description: Version of markdownlint-cli to use
+    description: Version of markdownlint-cli to use.
     required: false
   config:
-    description: markdownlint config file
+    description: markdownlint config file.
     required: false
   files:
-    description: Markdown files to scan
+    description: Markdown files to scan.
     required: false
     default: '**/*.{md,markdown}'
   ignore:
-    description: Files or directories to ignore
+    description: File or directory to ignore. If ignoring more than one file/directory you must use `.markdownlintignore` instead.
     required: false
   fix:
-    description: Try to fix basic errors
+    description: Try to fix basic errors.
     required: false
 runs:
   using: docker
