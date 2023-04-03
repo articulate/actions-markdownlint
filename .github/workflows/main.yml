@@ -36,6 +36,7 @@ jobs:
         with:
           files: test/fail.md
           config: test/.markdownlint.json
+          pr_comment: true
 
   test-fix:
     runs-on: ubuntu-latest
@@ -46,3 +47,30 @@ jobs:
           files: test/fix.md
           fix: true
       - run: test "$(md5sum test/fix.md)" == "d38a4c066f4c6e80a0409e23f68226bf  test/fix.md"
+
+  pr-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+      - uses: ./
+        if: github.event_name == 'pull_request'
+        env:
+          MARKDOWN_LINT: "#### Markdown Lint 🧹 📄 ✨ ${{ needs.job.test-fail.outputs.MARKDOWNLINT_OUTPUT }}"
+        with:
+          files: test/fail.md
+          config: test/.markdownlint.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### Markdown Lint 🧹 📄 ✨\`${{ needs.job.test-fail.outcome }}\`
+            <details><summary>Show Linting Results</summary>
+            \n
+            ${process.env.MARKDOWN_LINT}
+            \n
+            </details>`;
+              github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })

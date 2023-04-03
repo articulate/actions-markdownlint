@@ -18,6 +18,10 @@ inputs:
   fix:
     description: Try to fix basic errors.
     required: false
+  pr_comment:
+    description: Add comment with markdown errors.
+    required: false
+    default: "false"
 runs:
   using: docker
   image: Dockerfile

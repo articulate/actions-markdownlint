@@ -40,4 +40,22 @@ fi
 
 echo "::debug::linting ${INPUT_FILES}"
 # shellcheck disable=SC2086
-markdownlint ${MARKDOWNLINT} ${INPUT_FILES}
+
+
+if [ -n "$INPUT_IGNORE" ]; then
+    echo "::debug::ignoring ${INPUT_IGNORE}"
+    MARKDOWNLINT="${MARKDOWNLINT} --ignore ${INPUT_IGNORE}"
+fi
+
+if [[ $INPUT_PR_COMMENT = true ]]; then
+    echo "::debug::linting ${INPUT_FILES}"
+    echo 'MARKDOWNLINT_OUTPUT<<EOF' >> $GITHUB_OUTPUT
+    echo markdownlint {$MARKDOWNLINT} {$INPUT_FILES} >> $GITHUB_OUTPUT
+    echo 'EOF' >> $GITHUB_OUTPUT
+else
+    echo "::debug::linting ${INPUT_FILES}"
+    # shellcheck disable=SC2086
+    markdownlint ${MARKDOWNLINT} ${INPUT_FILES}
+fi
+
+
