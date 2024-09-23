@@ -1,5 +1,9 @@
 # markdownlint action
 
+> [!CAUTION]
+> This action is deprecated. Use [DavidAnson/markdownlint-cli2-action](https://github.com/DavidAnson/markdownlint-cli2-action)
+> or [super-linter](https://github.com/super-linter/super-linter) instead.
+
 This action lints your Markdown files with [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli).
 
 ## Usage
